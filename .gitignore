@@ -3,3 +3,4 @@ node_modules
 /blog/
 /sitemap.xml
 /data/posts.js
+.omx/

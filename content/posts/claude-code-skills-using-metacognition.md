@@ -1,6 +1,7 @@
 ---
 title: Claude Code skills using metacognition
 date: 2026-01-28
+category: Tech
 ---
 
 ## `/wrap`: review the session

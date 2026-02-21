@@ -1,6 +1,7 @@
 ---
 title: Handling concurrency issues in Kotlin + Spring Boot REST APIs
 date: 2025-05-30
+category: Tech
 tags: Backend, Concurrency, REST APIs, Kotlin, Spring Boot, Spring Data JPA
 ---
 

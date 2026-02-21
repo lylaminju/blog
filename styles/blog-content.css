@@ -186,6 +186,17 @@ pre {
   }
 }
 
+.code-note {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+pre + .code-note {
+  margin-top: -1.25rem;
+  margin-bottom: 1rem;
+}
+
 .copy-btn {
   position: absolute;
   top: 0.5rem;

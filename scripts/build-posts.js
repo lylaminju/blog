@@ -197,6 +197,7 @@ async function buildPosts() {
 			date: metadata.date,
 			title: metadata.title,
 			slug,
+			category: metadata.category || "General",
 		});
 
 		console.log(`Generated: blog/${slug}/index.html`);

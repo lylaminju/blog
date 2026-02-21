@@ -1,5 +1,61 @@
 .blog-posts {
-  margin: 2rem 0;
+  margin: 0 0 2rem;
+}
+
+body.blog-page {
+  justify-content: flex-start;
+}
+
+body.blog-page app-footer {
+  margin-top: auto;
+}
+
+.blog-filters {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.filter-label {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.category-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.category-chip {
+  border: 1px solid var(--border);
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  padding: 0.32rem 0.65rem;
+  border-radius: 999px;
+  font-family: var(--font-heading);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.category-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.category-chip.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.post-main {
+  min-width: 0;
 }
 
 .posts-year {
@@ -56,11 +112,23 @@
   min-width: 0;
 }
 
+.post-category {
+  margin-top: 0.2rem;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
 .post-date {
   font-family: var(--font-heading);
   font-size: 0.85rem;
   color: var(--text-muted);
   flex-shrink: 0;
+}
+
+.no-posts {
+  color: var(--text-secondary);
+  margin-top: 1rem;
 }
 
 @media (max-width: 768px) {

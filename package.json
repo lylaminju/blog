@@ -2,7 +2,8 @@
 	"name": "personal-website",
 	"type": "module",
 	"scripts": {
-		"build": "node scripts/build-posts.js"
+		"build": "node scripts/build-posts.js",
+		"dev": "fswatch -o content/posts | xargs -n1 -I{} npm run build & npx live-server --port=8080"
 	},
 	"dependencies": {
 		"highlight.js": "^11.11.1",

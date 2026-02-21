@@ -1,6 +1,7 @@
 ---
 title: Hashing Passwords Using Only the Web Crypto API
 date: 2025-02-25
+category: Tech
 ---
 
 ## Background

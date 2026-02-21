@@ -28,6 +28,9 @@ Personal portfolio website for Lyla (Minju) Park - a full-stack software enginee
 - Avoid code duplication; prefer a single source of truth when there are no side effects
 - Extract repeated logic into shared files (e.g., `/utils/` for JS, CSS variables for styles)
 
+### Blog Posts
+- Do not use em dashes (—) in blog post markdown. Use commas, periods, or parentheses instead. Ask for approval if an em dash feels truly necessary.
+
 ### Commit Messages
 - Follow conventional commits (feat, fix, style, perf, refactor, chore, docs)
 - End with `Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>` when Claude contributes
