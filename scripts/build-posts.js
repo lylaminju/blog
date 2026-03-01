@@ -23,7 +23,7 @@ const md = MarkdownIt({
 });
 
 const POSTS_DIR = new URL("../content/posts", import.meta.url).pathname;
-const OUTPUT_DIR = new URL("../blog", import.meta.url).pathname;
+const OUTPUT_DIR = new URL("../posts", import.meta.url).pathname;
 const DATA_FILE = new URL("../data/posts.js", import.meta.url).pathname;
 const SITEMAP_FILE = new URL("../sitemap.xml", import.meta.url).pathname;
 const SITE_URL = "https://lylamin.com";
@@ -60,7 +60,7 @@ function generateSitemap(posts) {
 	const staticPages = [
 		{ loc: "/", priority: "1.0" },
 		{ loc: "/about", priority: "0.8" },
-		{ loc: "/blog", priority: "0.8" },
+		{ loc: "/posts", priority: "0.8" },
 	];
 
 	const staticUrls = staticPages
@@ -75,7 +75,7 @@ function generateSitemap(posts) {
 	const postUrls = posts
 		.map(
 			(post) => `  <url>
-    <loc>${SITE_URL}/blog/${post.slug}/</loc>
+    <loc>${SITE_URL}/posts/${post.slug}/</loc>
     <lastmod>${post.date}</lastmod>
     <priority>0.6</priority>
   </url>`
@@ -98,7 +98,7 @@ function generatePostHtml(title, date, htmlContent, tags, slug) {
 				.join(" ")
 		: "";
 
-	const postUrl = `${SITE_URL}/blog/${slug}/`;
+	const postUrl = `${SITE_URL}/posts/${slug}/`;
 	const description = `${title} - A blog post by Lyla`;
 
 	return `<!DOCTYPE html>
@@ -204,7 +204,7 @@ async function buildPosts() {
 			category: metadata.category || "General",
 		});
 
-		console.log(`Generated: blog/${slug}/index.html`);
+		console.log(`Generated: posts/${slug}/index.html`);
 	}
 
 	posts.sort((a, b) => new Date(b.date) - new Date(a.date));

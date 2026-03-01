@@ -16,7 +16,7 @@ class Header extends HTMLElement {
       <header>
         <nav>
           <a class="link" href="${basePath}index.html">Home</a>
-          <a class="link" href="${basePath}blog.html">Blog</a>
+          <a class="link" href="${basePath}posts.html">Posts</a>
           <a class="link" href="${basePath}about.html">About</a>
         </nav>
         <button id="theme-toggle" aria-label="Toggle dark mode">

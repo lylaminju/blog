@@ -1,6 +1,6 @@
 .DS_store
 node_modules
-/blog/
+/posts/
 /sitemap.xml
 /data/posts.js
 .omx/

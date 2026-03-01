@@ -77,7 +77,7 @@ class BlogPosts extends HTMLElement {
 								.map(
 									(post) => `
                   <li class="post-item">
-                    <a href="/blog/${post.slug}" class="post-link">
+                    <a href="posts/${post.slug}/" class="post-link">
                       <div class="post-main">
                         <div class="post-title">${post.title}</div>
                         <div class="post-category">${post.category || "General"}</div>
