@@ -34,6 +34,7 @@ function slugify(text) {
 		.replace(/[^\w\s-]/g, "")
 		.replace(/\s+/g, "-")
 		.replace(/-+/g, "-")
+		.replace(/^-+|-+$/g, "")
 		.trim();
 }
 
@@ -176,7 +177,10 @@ async function buildPosts() {
 			continue;
 		}
 
-		const slug = slugify(metadata.title);
+		const titleSlug = slugify(metadata.title || "");
+		const customSlug = slugify(metadata.slug || "");
+		const fileSlug = slugify(file.replace(/\.md$/, ""));
+		const slug = customSlug || titleSlug || fileSlug;
 		const htmlContent = md.render(content);
 
 		// Create directory for the post
