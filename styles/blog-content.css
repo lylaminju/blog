@@ -74,6 +74,13 @@ p {
 	margin: 0.75rem 0;
 }
 
+.emphasis-text {
+	font-size: 1.3rem;
+	font-weight: 600;
+	line-height: 1.75;
+	margin-bottom: 1.5rem;
+}
+
 a {
 	color: var(--accent);
 }
