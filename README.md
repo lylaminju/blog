@@ -12,7 +12,7 @@ Deployed on [Cloudflare Pages](https://pages.cloudflare.com/).
 ```mermaid
 flowchart TB
     subgraph Write["1. Write"]
-        md["content/posts/my-post.md
+        md["content/posts/review/book/my-post.md
         ―――――――――――――――
         ---
         title: My Post
@@ -23,18 +23,19 @@ flowchart TB
     end
 
     subgraph Build["2. Build · npm run build"]
-        scan[Scan content/posts/*.md]
+        scan[Scan content/posts/**/*.md recursively]
         parse[Parse frontmatter]
-        slug[Generate slug from title]
+        slug["Generate route from relative file path
+        (frontmatter slug can override leaf segment)"]
         render_md["markdown-it → HTML
         hljs → syntax highlighting"]
-        write_html["Write posts/slug/index.html
+        write_html["Write posts/review/book/slug/index.html
         ―――――――――――――――
         Static HTML with
         styles, header, footer"]
         write_data["Write data/posts.js
         ―――――――――――――――
-        { date, title, slug }"]
+        { date, title, slug, category }"]
         scan --> parse --> slug --> render_md --> write_html
         render_md --> write_data
     end
@@ -46,13 +47,13 @@ flowchart TB
         ―――――――――――――――
         imports data/posts.js
         renders &lt;ul&gt; of post links
-        href='/posts/my-post'"]
+        href='/posts/review/book/my-post'"]
 
         click_["User clicks a post
-        /posts/my-post"]
+        /posts/review/book/my-post"]
 
         static["Static HTML
-        posts/my-post/index.html
+        posts/review/book/my-post/index.html
         ―――――――――――――――
         Pre-built at build time
         No runtime processing"]

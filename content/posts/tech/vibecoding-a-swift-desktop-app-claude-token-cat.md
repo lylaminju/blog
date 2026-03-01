@@ -1,7 +1,6 @@
 ---
 title: Vibecoding a Swift Desktop App - Claude Token Cat
 date: 2026-02-12
-category: Tech
 ---
 
 I built a desktop application named [Claude Token Cat](https://github.com/lylaminju/claude-token-cat)</br>- A macOS menu bar app that visualizes your Claude usage with an animated pixel art cat

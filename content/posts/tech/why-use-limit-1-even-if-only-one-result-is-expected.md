@@ -1,7 +1,6 @@
 ---
 title: Why Use `LIMIT 1` Even If Only One Result Is Expected
 date: 2025-02-23
-category: Tech
 ---
 
 ```js

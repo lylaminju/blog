@@ -1,8 +1,6 @@
 ---
 title: AI를 움직이는 수학 이야기 - 서비스를 수학의 언어로 다시 보는 책
-slug: math-behind-ai-review
 date: 2026-02-28
-category: Review
 ---
 
 AI를 쓰는 시대에서, 이제는 AI를 "해석"하는 시대가 왔다고 느낀다.

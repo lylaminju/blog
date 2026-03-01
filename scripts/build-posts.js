@@ -1,5 +1,5 @@
 import { readdir, readFile, writeFile, mkdir, rm } from "node:fs/promises";
-import { join } from "node:path";
+import { basename, join, relative, sep } from "node:path";
 import MarkdownIt from "markdown-it";
 import anchor from "markdown-it-anchor";
 import hljs from "highlight.js";
@@ -54,6 +54,73 @@ function parseFrontmatter(content) {
 	}, {});
 
 	return { metadata, content: markdownContent };
+}
+
+function formatCategorySegment(segment) {
+	return segment
+		.split("-")
+		.filter(Boolean)
+		.map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+		.join(" ");
+}
+
+function normalizePath(pathname) {
+	return pathname.split(sep).join("/");
+}
+
+function getCategoryFromFolders(folderSegments) {
+	if (folderSegments.length > 0) {
+		return folderSegments.map(formatCategorySegment).join(" / ");
+	}
+
+	return "General";
+}
+
+function resolveRoute(relativeFilePath, metadata) {
+	const normalized = normalizePath(relativeFilePath);
+	const pathSegments = normalized.split("/");
+	const fileName = basename(pathSegments.at(-1), ".md");
+	const folderSegments = pathSegments.slice(0, -1).map(slugify).filter(Boolean);
+
+	if ((metadata.slug || "").includes("/")) {
+		throw new Error(
+			`Invalid slug in ${relativeFilePath}: slashes are not allowed in frontmatter slug`,
+		);
+	}
+
+	const customLeafSlug = slugify(metadata.slug || "");
+	const fileLeafSlug = slugify(fileName);
+	const leafSlug = customLeafSlug || fileLeafSlug;
+	const slugSegments = [...folderSegments, leafSlug].filter(Boolean);
+	const slug = slugSegments.join("/");
+	const category = getCategoryFromFolders(folderSegments);
+
+	if (!slug) {
+		throw new Error(`Failed to generate slug for ${relativeFilePath}`);
+	}
+
+	return { slug, category, sourcePath: normalized };
+}
+
+async function collectMarkdownFiles(dir) {
+	const entries = await readdir(dir, { withFileTypes: true });
+	const sortedEntries = entries.sort((a, b) => a.name.localeCompare(b.name));
+	const files = [];
+
+	for (const entry of sortedEntries) {
+		const fullPath = join(dir, entry.name);
+
+		if (entry.isDirectory()) {
+			files.push(...(await collectMarkdownFiles(fullPath)));
+			continue;
+		}
+
+		if (entry.isFile() && entry.name.endsWith(".md")) {
+			files.push(fullPath);
+		}
+	}
+
+	return files;
 }
 
 function generateSitemap(posts) {
@@ -160,27 +227,37 @@ function generatePostHtml(title, date, htmlContent, tags, slug) {
 }
 
 async function buildPosts() {
-	const files = (await readdir(POSTS_DIR)).filter((f) => f.endsWith(".md"));
+	const files = await collectMarkdownFiles(POSTS_DIR);
 
 	// Clean and recreate output directory
 	await rm(OUTPUT_DIR, { recursive: true, force: true });
 	await mkdir(OUTPUT_DIR, { recursive: true });
 
 	const posts = [];
+	const seenSlugs = new Set();
 
-	for (const file of files) {
-		const rawContent = await readFile(join(POSTS_DIR, file), "utf-8");
+	for (const filePath of files) {
+		const rawContent = await readFile(filePath, "utf-8");
 		const { metadata, content } = parseFrontmatter(rawContent);
+		const relativeFilePath = relative(POSTS_DIR, filePath);
 
 		if (!metadata.title || !metadata.date) {
-			console.warn(`Skipping ${file}: missing title or date in frontmatter`);
+			console.warn(
+				`Skipping ${relativeFilePath}: missing title or date in frontmatter`,
+			);
 			continue;
 		}
 
-		const titleSlug = slugify(metadata.title || "");
-		const customSlug = slugify(metadata.slug || "");
-		const fileSlug = slugify(file.replace(/\.md$/, ""));
-		const slug = customSlug || titleSlug || fileSlug;
+		const { slug, category, sourcePath } = resolveRoute(
+			relativeFilePath,
+			metadata,
+		);
+
+		if (seenSlugs.has(slug)) {
+			throw new Error(`Duplicate post route generated: ${slug}`);
+		}
+		seenSlugs.add(slug);
+
 		const htmlContent = md.render(content);
 
 		// Create directory for the post
@@ -201,7 +278,8 @@ async function buildPosts() {
 			date: metadata.date,
 			title: metadata.title,
 			slug,
-			category: metadata.category || "General",
+			category,
+			sourcePath,
 		});
 
 		console.log(`Generated: posts/${slug}/index.html`);

@@ -1,7 +1,6 @@
 ---
 title: Keep Your Identity Small
 date: 2026-01-28
-category: Essay
 ---
 
 > The more labels you have for yourself, the dumber they make you.
