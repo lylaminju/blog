@@ -5,7 +5,7 @@ date: 2026-02-12
 
 I built a desktop application named [Claude Token Cat](https://github.com/lylaminju/claude-token-cat)</br>- A macOS menu bar app that visualizes your Claude usage with an animated pixel art cat
 
-<img src="/assets/blog/claude-token-cat-menu.gif" alt="Claude Token Cat menu preview" style="width:min(420px,100%);height:auto;display:block;margin:1.25rem auto;" loading="lazy" decoding="async" />
+<img src="/assets/posts/claude-token-cat-menu.gif" alt="Claude Token Cat menu preview" style="width:min(420px,100%);height:auto;display:block;margin:1.25rem auto;" loading="lazy" decoding="async" />
 
 ### This was my first vibecoding experience with Claude Code
 
@@ -45,7 +45,7 @@ Whether due to my lack of prompting skill, the AI-generated pixel art just wasn'
 
 After several rounds of back-and-forth, I ended up creating all the pixel art from scratch myself in [Piskel](https://www.piskelapp.com/). (It took a long time to create natural movements because I didn't fully understand how cats move. The pixel art still isn't perfectly natural even now...) <br/> The only thing AI handled was converting `.piskel` files to Swift code via a Python function.
 
-<img src="/assets/blog/cat-idle.gif" alt="idle" style="height: 40px"> <img src="/assets/blog/cat-jumping.gif" alt="jumping" style="height: 40px"> <img src="/assets/blog/cat-walking.gif" alt="walking" style="height: 40px"> <img src="/assets/blog/cat-tired.gif" alt="tired" style="height: 40px"> <img src="/assets/blog/cat-sleeping.gif" alt="sleeping" style="height: 40px">
+<img src="/assets/posts/cat-idle.gif" alt="idle" style="height: 40px"> <img src="/assets/posts/cat-jumping.gif" alt="jumping" style="height: 40px"> <img src="/assets/posts/cat-walking.gif" alt="walking" style="height: 40px"> <img src="/assets/posts/cat-tired.gif" alt="tired" style="height: 40px"> <img src="/assets/posts/cat-sleeping.gif" alt="sleeping" style="height: 40px">
 
 Easily installable via Homebrew 😺
 
