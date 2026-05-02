@@ -61,11 +61,18 @@ h2 {
 
 h3 {
 	margin: 2.5rem 0 0.8rem;
-	font-size: 1.4rem;
+	font-size: 1.45rem;
 }
 
 h4 {
-	font-size: 1.2rem;
+	margin: 1.75rem 0 0.65rem;
+	font-size: 1.3rem;
+	font-weight: 600;
+}
+
+h5 {
+	margin: 1.5rem 0 0;
+	font-size: 1.17rem;
 	font-weight: 600;
 }
 
