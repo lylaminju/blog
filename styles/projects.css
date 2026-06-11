@@ -17,9 +17,10 @@
 
 .project-image {
   flex: 0 0 250px;
-  height: 200px;
+  align-self: stretch;
+  min-height: 200px;
   display: flex;
-  align-items: center;
+  align-items: stretch;
 
   img {
     width: 100%;

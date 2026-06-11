@@ -1,5 +1,36 @@
 export const projects = [
 	{
+		title: "Trip Planner",
+		emoji: "🗺️",
+		image: "./assets/project-images/trip-planner-preview.webp",
+		github: "https://github.com/lylaminju/trip-planner",
+		website: "https://trip-planner-silk-xi.vercel.app/",
+		description:
+			"Trip planning app for building dated itineraries from saved places and viewing the route on Google Maps",
+		techStack:
+			"TypeScript, Next.js, React, Supabase, Google Maps JavaScript API, Google Routes API, Vitest",
+	},
+	{
+		title: "Weekly Routine Planner",
+		emoji: "📅",
+		image: "./assets/project-images/weekly-routine-planner-preview.webp",
+		github: "https://github.com/lylaminju/weekly-routine-planner",
+		website: "https://community.obsidian.md/plugins/weekly-routine-planner",
+		description:
+			"Obsidian plugin for planning recurring weekly routines with a timetable-style editor",
+		techStack: "TypeScript, Obsidian API, CSS",
+	},
+	{
+		title: "Canada CRS Dashboard",
+		emoji: "🇨🇦",
+		image: "./assets/project-images/crs-dashboard-preview.webp",
+		github: "https://github.com/lylaminju/crs-dashboard",
+		website: "https://lylaminju.github.io/crs-dashboard/",
+		description:
+			"Static dashboard for exploring Canada Express Entry CRS scores, factor breakdowns, and score opportunities",
+		techStack: "JavaScript, HTML, CSS",
+	},
+	{
 		title: "Claude Token Cat",
 		emoji: "🐱",
 		image: "./assets/project-images/claude-token-cat-preview.webp",
