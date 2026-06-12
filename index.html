@@ -1,17 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Lyla</title>
-		<meta name="description" content="Full stack software engineer building applications" />
+		<meta
+			name="description"
+			content="Software engineering notes and selected work by Minju Lyla Park."
+		/>
 		<meta property="og:title" content="Lyla - Software Engineer" />
-		<meta property="og:description" content="I build, share, and climb" />
+		<meta
+			property="og:description"
+			content="Software engineering notes and selected work by Minju Lyla Park."
+		/>
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://lylamin.com/" />
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:title" content="Lyla - Software Engineer" />
-		<meta name="twitter:description" content="I build, share, and climb" />
+		<meta
+			name="twitter:description"
+			content="Software engineering notes and selected work by Minju Lyla Park."
+		/>
 		<script src="utils/theme-init.js"></script>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,62 +42,79 @@
 
 		gtag("config", "G-8T2LVCMTTY");
 	</script>
-	<body>
+	<body class="home-page">
 		<app-header></app-header>
 
 		<main>
-		<section>
-			<p class="greeting">
-				Hi, I'm
-				<span class="name">Lyla</span>
-			</p>
-			<h1>Full-Stack Software Engineer</h1>
-			<p>
-				I build web applications from database to UI, with experience in
-				TypeScript, React, Kotlin, and Spring Boot.
-			</p>
-		</section>
+			<section class="home-hero" aria-labelledby="home-title">
+				<h1 id="home-title">
+					Notes from building practical web apps and developer tools.
+				</h1>
+				<p class="hero-lede">
+					I build web applications from database to UI, then write down the
+					engineering lessons that survive real projects: performance, data
+					integrity, backend APIs, and useful tools.
+				</p>
+				<div class="hero-actions" aria-label="Homepage shortcuts">
+					<a class="button-link primary" href="posts.html">Read writing</a>
+					<a class="button-link" href="#work">See selected work</a>
+				</div>
+			</section>
 
-		<section id="projects">
-			<h1>Projects <a href="#projects" class="anchor-link">#</a></h1>
-			<project-list></project-list>
-		</section>
+			<section
+				id="writing"
+				class="home-section writing-preview"
+				aria-labelledby="writing-title"
+			>
+				<div class="section-heading">
+					<h2 id="writing-title">Latest writing</h2>
+				</div>
+				<latest-posts></latest-posts>
+				<a class="section-link" href="posts.html">Browse all writing</a>
+			</section>
 
-		<section id="career">
-			<h1>Career <a href="#career" class="anchor-link">#</a></h1>
-			<div class="career">
-				<h2>Software Engineer</h2>
-				<p>
-					<a href="https://torontojs.com/">TorontoJS</a> (Tech Community), Nov
-					2024 - Jul 2025
-				</p>
-				<p class="explanation">
-					Built authentication features and email-sending service for a
-					<a href="https://github.com/torontojs/vms">
-						Volunteer Management System
-					</a>
-				</p>
-				<p class="tech-stack">
-					Language: TypeScript | Frameworks: React, Hono.js | Database: SQLite |
-					Platform: Cloudflare Workers | Testing: Vitest
-				</p>
-			</div>
-			<div class="career">
-				<h2>Software Engineer - Backend</h2>
-				<p>
-					<a href="https://www.nuua.ai/en/">NUUA</a> (Travel Tech Startup), Aug
-					2023 - Aug 2024
-				</p>
-				<p class="explanation">
-					Developed RESTful APIs of Online Booking Tool
-					<a href="https://www.won.travel/">WonTravel</a>
-				</p>
-				<p class="tech-stack">
-					Language: Kotlin | Frameworks: Spring Boot, MyBatis | Database: MySQL
-					| Testing: JUnit
-				</p>
-			</div>
-		</section>
+			<section
+				id="work"
+				class="home-section work-preview"
+				aria-labelledby="work-title"
+			>
+				<div class="section-heading">
+					<h2 id="work-title">Selected work</h2>
+					<p>
+						A few projects that show the kind of product, data, and tooling
+						problems I like to solve.
+					</p>
+				</div>
+				<project-list featured></project-list>
+				<a class="section-link" href="work.html">View all work</a>
+			</section>
+
+			<section
+				id="experience"
+				class="home-section experience-preview"
+				aria-labelledby="experience-title"
+			>
+				<div class="section-heading">
+					<h2 id="experience-title">From backend APIs to user-facing tools</h2>
+				</div>
+				<ul class="experience-list">
+					<li>
+						<strong>TorontoJS</strong>
+						<span>
+							Built authentication features and an email-sending service for a
+							volunteer management system using React, Hono.js, SQLite, Vitest,
+							and Cloudflare Workers.
+						</span>
+					</li>
+					<li>
+						<strong>NUUA</strong>
+						<span>
+							Developed Kotlin and Spring Boot APIs for a travel-tech online
+							booking tool, with MySQL, MyBatis, and JUnit.
+						</span>
+					</li>
+				</ul>
+			</section>
 		</main>
 
 		<app-footer></app-footer>

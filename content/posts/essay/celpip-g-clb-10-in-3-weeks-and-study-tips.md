@@ -2,6 +2,7 @@
 title: CELPIP-G 3주 안에 CLB 10 만들기, Study Tips
 date: 2026-05-01
 tags: CELPIP, English, Canada
+description: Study notes and tactics from reaching CELPIP-G CLB 10 in three weeks.
 ---
 
 ## 약 2년 만의 점수 변화

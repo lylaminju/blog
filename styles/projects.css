@@ -5,14 +5,28 @@
 
 .project-box {
   display: flex;
-  gap: 0.5rem;
   margin: 1.5rem 0;
-  border-radius: 12px;
-  background: var(--bg-primary);
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--bg-elevated);
   border: 1px solid var(--border);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   /* Contain layout to prevent shifts */
   contain: layout;
+}
+
+project-list[featured] {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+  gap: 1rem;
+}
+
+project-list[featured] .project-box {
+  flex-direction: column;
+  margin: 0;
+}
+
+project-list[featured] .project-box:first-child {
+  grid-row: span 2;
 }
 
 .project-image {
@@ -26,8 +40,23 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 12px 0 0 12px;
+    border-radius: 8px 0 0 8px;
   }
+}
+
+project-list[featured] .project-image {
+  flex: none;
+  min-height: 170px;
+  height: 170px;
+}
+
+project-list[featured] .project-box:first-child .project-image {
+  aspect-ratio: 5 / 4;
+  height: auto;
+}
+
+project-list[featured] .project-image img {
+  border-radius: 8px 8px 0 0;
 }
 
 .project-content {
@@ -53,7 +82,8 @@
 .title-row {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: flex-start;
+  gap: 0.75rem;
 
   h2 {
     margin: 0 1rem 0 0;
@@ -65,7 +95,9 @@
 
   ul {
     display: flex;
+    flex-shrink: 0;
     padding: 0;
+    margin: 0;
     list-style: none;
 
     li {
@@ -86,9 +118,16 @@
 }
 
 @media (max-width: 768px) {
+  project-list[featured] {
+    grid-template-columns: 1fr;
+  }
+
+  project-list[featured] .project-box:first-child {
+    grid-row: auto;
+  }
+
   .project-box {
     flex-direction: column;
-    gap: 0.5rem;
   }
 
   .project-image {
@@ -97,8 +136,13 @@
     height: 180px;
 
     img {
-      border-radius: 12px 12px 0 0;
+      border-radius: 8px 8px 0 0;
     }
+  }
+
+  project-list[featured] .project-image,
+  project-list[featured] .project-box:first-child .project-image {
+    height: 180px;
   }
 
   .project-content {

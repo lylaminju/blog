@@ -1,6 +1,7 @@
 export const projects = [
 	{
 		title: "Trip Planner",
+		featured: true,
 		emoji: "🗺️",
 		image: "./assets/project-images/trip-planner-preview.webp",
 		github: "https://github.com/lylaminju/trip-planner",
@@ -12,6 +13,7 @@ export const projects = [
 	},
 	{
 		title: "Weekly Routine Planner",
+		featured: true,
 		emoji: "📅",
 		image: "./assets/project-images/weekly-routine-planner-preview.webp",
 		github: "https://github.com/lylaminju/weekly-routine-planner",
@@ -41,6 +43,7 @@ export const projects = [
 	},
 	{
 		title: "ClimberzDay",
+		featured: true,
 		emoji: "🧗",
 		image: "./assets/project-images/climberzday-preview.webp",
 		github: "https://github.com/lylaminju/climbers",

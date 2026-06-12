@@ -4,3 +4,5 @@ node_modules
 /sitemap.xml
 /data/posts.js
 .omx/
+.agents/skills/impeccable/
+.claude/skills/impeccable/

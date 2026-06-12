@@ -1,6 +1,7 @@
 ---
 title: AI를 움직이는 수학 이야기 - 서비스를 수학의 언어로 다시 보는 책
 date: 2026-02-28
+description: A Korean-language book note on understanding AI services through math.
 ---
 
 <p class="emphasis-text"><em>"한빛미디어 서평단 <나는리뷰어다> 활동을 위해서 책을 협찬 받아 작성된 서평입니다."</em></p>

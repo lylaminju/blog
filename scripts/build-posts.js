@@ -56,6 +56,14 @@ function parseFrontmatter(content) {
 	return { metadata, content: markdownContent };
 }
 
+function escapeHtmlAttribute(value) {
+	return String(value)
+		.replaceAll("&", "&amp;")
+		.replaceAll('"', "&quot;")
+		.replaceAll("<", "&lt;")
+		.replaceAll(">", "&gt;");
+}
+
 function formatCategorySegment(segment) {
 	return segment
 		.split("-")
@@ -124,11 +132,12 @@ async function collectMarkdownFiles(dir) {
 }
 
 function generateSitemap(posts) {
-	const staticPages = [
-		{ loc: "/", priority: "1.0" },
-		{ loc: "/about", priority: "0.8" },
-		{ loc: "/posts", priority: "0.8" },
-	];
+		const staticPages = [
+			{ loc: "/", priority: "1.0" },
+			{ loc: "/about", priority: "0.8" },
+			{ loc: "/posts", priority: "0.8" },
+			{ loc: "/work", priority: "0.8" },
+		];
 
 	const staticUrls = staticPages
 		.map(
@@ -157,7 +166,7 @@ ${postUrls}
 `;
 }
 
-function generatePostHtml(title, date, htmlContent, tags, slug) {
+function generatePostHtml(title, date, htmlContent, tags, slug, description) {
 	const tagsHtml = tags
 		? tags
 				.split(", ")
@@ -166,7 +175,8 @@ function generatePostHtml(title, date, htmlContent, tags, slug) {
 		: "";
 
 	const postUrl = `${SITE_URL}/posts/${slug}/`;
-	const description = `${title} - A blog post by Lyla`;
+	const metaDescription = description || `${title} - A blog post by Lyla`;
+	const escapedDescription = escapeHtmlAttribute(metaDescription);
 
 	return `<!DOCTYPE html>
 <html lang="en">
@@ -174,15 +184,15 @@ function generatePostHtml(title, date, htmlContent, tags, slug) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>${title} - Lyla's Blog</title>
-    <meta name="description" content="${description}" />
+    <meta name="description" content="${escapedDescription}" />
     <meta property="og:title" content="${title}" />
-    <meta property="og:description" content="${description}" />
+    <meta property="og:description" content="${escapedDescription}" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="${postUrl}" />
     <meta property="article:published_time" content="${date}" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="${title}" />
-    <meta name="twitter:description" content="${description}" />
+    <meta name="twitter:description" content="${escapedDescription}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="/styles/styles.css" />
@@ -269,17 +279,19 @@ async function buildPosts() {
 			metadata.title,
 			metadata.date,
 			htmlContent,
-			metadata.tags,
-			slug,
-		);
+				metadata.tags,
+				slug,
+				metadata.description,
+			);
 		await writeFile(join(postDir, "index.html"), html, "utf-8");
 
-		posts.push({
-			date: metadata.date,
-			title: metadata.title,
-			slug,
-			category,
-			sourcePath,
+			posts.push({
+				date: metadata.date,
+				title: metadata.title,
+				...(metadata.description ? { description: metadata.description } : {}),
+				slug,
+				category,
+				sourcePath,
 		});
 
 		console.log(`Generated: posts/${slug}/index.html`);

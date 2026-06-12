@@ -49,9 +49,15 @@ body.blog-page app-footer {
 }
 
 .category-chip.is-active {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
+  background: var(--button-primary-bg);
+  border-color: var(--button-primary-bg);
+  color: var(--button-primary-fg);
+}
+
+.category-chip.is-active:hover {
+  background: var(--button-primary-hover-bg);
+  border-color: var(--button-primary-hover-bg);
+  color: var(--button-primary-hover-fg);
 }
 
 .post-main {

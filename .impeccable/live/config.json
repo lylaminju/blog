@@ -1,0 +1,6 @@
+{
+  "files": ["*.html", "posts/**/*.html"],
+  "insertBefore": "</body>",
+  "commentSyntax": "html",
+  "cspChecked": true
+}

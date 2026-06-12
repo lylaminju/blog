@@ -1,6 +1,7 @@
 ---
 title: Improving Page Load by Lazy-Loading Images
 date: 2026-05-06
+description: How lazy image loading reduced the initial image waterfall on a climbing gym app.
 ---
 
 <figure style="margin:1.5rem 0;">

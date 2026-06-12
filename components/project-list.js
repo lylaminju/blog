@@ -9,6 +9,14 @@ class ProjectList extends HTMLElement {
 		this.render();
 	}
 
+	getProjects() {
+		if (this.hasAttribute("featured")) {
+			return projects.filter((project) => project.featured);
+		}
+
+		return projects;
+	}
+
 	getIconPath() {
 		return "./assets/icons";
 	}
@@ -31,10 +39,10 @@ class ProjectList extends HTMLElement {
 				</div>
 				<div class="project-content">
 					<div class="title-row">
-						<h2>${project.emoji} ${project.title}</h2>
+						<h2>${project.title}</h2>
 						<ul>
 							<li>
-								<a target="_blank" href="${project.github}"
+								<a target="_blank" rel="noopener noreferrer" href="${project.github}"
 									onclick="event.stopPropagation()"
 									aria-label="View ${project.title} on GitHub">
 									<svg class="link-icon" aria-hidden="true">
@@ -46,7 +54,7 @@ class ProjectList extends HTMLElement {
 								project.website
 									? `
 								<li>
-									<a target="_blank" href="${project.website}" onclick="event.stopPropagation()"
+									<a target="_blank" rel="noopener noreferrer" href="${project.website}" onclick="event.stopPropagation()"
 										aria-label="Visit ${project.title} website">
 										<svg class="link-icon" aria-hidden="true">
 											<use href="${iconPath}/web.svg#icon"></use>
@@ -60,7 +68,7 @@ class ProjectList extends HTMLElement {
 								project.youtube
 									? `
 								<li>
-									<a target="_blank" href="${project.youtube}" onclick="event.stopPropagation()"
+									<a target="_blank" rel="noopener noreferrer" href="${project.youtube}" onclick="event.stopPropagation()"
 										aria-label="Watch ${project.title} demo on YouTube">
 										<svg class="link-icon" aria-hidden="true">
 											<use href="${iconPath}/youtube.svg#icon"></use>
@@ -72,7 +80,7 @@ class ProjectList extends HTMLElement {
 							}
 						</ul>
 					</div>
-					<p class="explanation">${project.description}</p>
+					<p class="project-description">${project.description}</p>
 					<p class="tech-stack">⚙️ ${project.techStack}</p>
 				</div>
 			</div>
@@ -80,7 +88,9 @@ class ProjectList extends HTMLElement {
 	}
 
 	render() {
-		this.innerHTML = projects.map((project) => this.createProjectBox(project)).join("");
+		this.innerHTML = this.getProjects()
+			.map((project) => this.createProjectBox(project))
+			.join("");
 	}
 }
 
