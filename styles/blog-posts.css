@@ -2,14 +2,6 @@
   margin: 0 0 2rem;
 }
 
-body.blog-page {
-  justify-content: flex-start;
-}
-
-body.blog-page app-footer {
-  margin-top: auto;
-}
-
 .blog-filters {
   display: flex;
   flex-direction: column;

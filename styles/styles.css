@@ -55,7 +55,7 @@ html {
 body {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: flex-start;
 	align-items: center;
 	padding-top: 20px;
 	min-height: 100vh;
@@ -175,6 +175,7 @@ app-header nav > a:hover::after {
 }
 
 main {
+	flex: 1 0 auto;
 	width: 100%;
 }
 
@@ -499,6 +500,11 @@ footer {
 	a:hover {
 		transform: translateY(-2px);
 	}
+}
+
+app-footer {
+	flex-shrink: 0;
+	margin-top: auto;
 }
 
 .footer-icon {
